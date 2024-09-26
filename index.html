@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chris Hemsworth Generator</title>
     <style>
-      /* Kehon yleisasetukset */
       body {
         font-family: 'Arial', sans-serif;
         margin: 0;
@@ -19,7 +18,6 @@
         color: #fff;
       }
 
-      /* Otsikko */
       h1 {
         font-size: 3rem;
         margin-bottom: 20px;
@@ -28,7 +26,6 @@
         text-transform: uppercase;
       }
 
-      /* Kuvan sisältö */
       #imageContainer {
         display: flex;
         justify-content: center;
@@ -38,26 +35,23 @@
         overflow: hidden;
         background-color: white;
         padding: 10px;
-        max-width: 90%; /* Maksimikoko rajoitettu pienemmillä näytöillä */
+        max-width: 90%;
       }
 
-      /* Kuvan tyylit - asetetaan joustava koko */
       #randomImage {
         width: 100%;
         height: auto;
-        max-width: 400px; /* Maksimikoko isommilla näytöillä */
+        max-width: 400px;
         object-fit: cover;
         border-radius: 10px;
         transition: transform 0.2s ease-in-out;
         cursor: pointer;
       }
 
-      /* Kuvan hover-efekti */
       #randomImage:hover {
         transform: scale(1.02);
       }
 
-      /* Kuvan vaihtumisefekti - samanlainen kuin hover */
       .image-zoom {
         animation: zoomEffect 0.2s ease-in-out;
       }
@@ -71,7 +65,6 @@
         }
       }
 
-      /* Alatunniste */
       footer {
         text-align: center;
         color: rgba(255, 255, 255, 0.7);
@@ -79,7 +72,6 @@
         margin-top: 20px;
       }
 
-      /* Responsiivisuus */
       @media (max-width: 768px) {
         h1 {
           font-size: 2.5rem;
@@ -110,10 +102,8 @@
     </style>
   </head>
   <body>
-    <!-- Otsikko -->
     <h1>Chris Hemsworth Generator</h1>
 
-    <!-- Kuvan sisältö -->
     <div id="imageContainer">
       <img
         id="randomImage"
@@ -150,17 +140,14 @@
       ];
 
       function changeImage() {
-        // Valitse satunnainen kuva
         const randomIndex = Math.floor(Math.random() * images.length);
         const newImage = images[randomIndex];
 
-        // Vaihda kuva
         const imageElement = document.getElementById('randomImage');
         imageElement.src = newImage;
 
-        // Poistetaan animaatioluokka ja lisätään uudestaan, jotta animaatio tapahtuu aina kuvan vaihtuessa
         imageElement.classList.remove('image-zoom');
-        void imageElement.offsetWidth; // Pakottaa uudelleenmaalauksen
+        void imageElement.offsetWidth;
         imageElement.classList.add('image-zoom');
       }
     </script>
