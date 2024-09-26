@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="fi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chris Hemsworth Generator</title>
+    <style>
+      /* Kehon yleisasetukset */
+      body {
+        font-family: 'Arial', sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background: linear-gradient(135deg, #2193b0, #6dd5ed);
+        color: #fff;
+      }
+
+      /* Otsikko */
+      h1 {
+        font-size: 3.5rem;
+        margin-bottom: 20px;
+        text-align: center;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+      }
+
+      /* Kuvan sisältö */
+      #imageContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        overflow: hidden;
+        background-color: white;
+        padding: 10px;
+      }
+
+      /* Kuvan tyylit - asetetaan kiinteä koko */
+      #randomImage {
+        width: 400px; /* Kiinteä leveys */
+        height: 400px; /* Kiinteä korkeus */
+        object-fit: cover; /* Pitää kuvasuhteen säilytettynä täyttäen alueen */
+        border-radius: 10px;
+        transition: transform 0.2s ease-in-out;
+        cursor: pointer;
+      }
+
+      /* Kuvan hover-efekti */
+      #randomImage:hover {
+        transform: scale(1.02);
+      }
+
+      /* Kuvan vaihtumisefekti - samanlainen kuin hover */
+      .image-zoom {
+        animation: zoomEffect 0.2s ease-in-out;
+      }
+
+      @keyframes zoomEffect {
+        0% {
+          transform: scale(0.98);
+        }
+        100% {
+          transform: scale(1.02);
+        }
+      }
+
+      /* Alatunniste */
+      footer {
+        position: absolute;
+        bottom: 10px;
+        text-align: center;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Otsikko -->
+    <h1>Chris Hemsworth Generator</h1>
+
+    <!-- Kuvan sisältö -->
+    <div id="imageContainer">
+      <img
+        id="randomImage"
+        src="images/image1.jpg"
+        alt="Chris Hemsworth"
+        onclick="changeImage()"
+      />
+    </div>
+
+    <!-- Alatunniste -->
+    <footer>Click the image to generate a random Chris Hemsworth photo.</footer>
+
+    <script>
+      // Lisää kuviesi nimet tähän taulukkoon
+      const images = [
+        'images/image1.jpg',
+        'images/image2.jpg',
+        'images/image3.jpg',
+        'images/image4.jpg',
+        'images/image5.jpg',
+        'images/image6.jpg',
+        'images/image7.jpg',
+        'images/image8.jpg',
+        'images/image9.jpg',
+        'images/image10.jpg',
+        'images/image11.jpg',
+        'images/image12.jpg',
+        'images/image13.jpg',
+        'images/image14.jpg',
+        'images/image15.jpg',
+        'images/image16.jpg',
+        'images/image17.jpg',
+        'images/image18.jpg',
+        'images/image19.jpg',
+        'images/image20.jpg',
+      ];
+
+      function changeImage() {
+        // Valitse satunnainen kuva
+        const randomIndex = Math.floor(Math.random() * images.length);
+        const newImage = images[randomIndex];
+
+        // Vaihda kuva
+        const imageElement = document.getElementById('randomImage');
+        imageElement.src = newImage;
+
+        // Poistetaan animaatioluokka ja lisätään uudestaan, jotta animaatio tapahtuu aina kuvan vaihtuessa
+        imageElement.classList.remove('image-zoom');
+        void imageElement.offsetWidth; // Pakottaa uudelleenmaalauksen
+        imageElement.classList.add('image-zoom');
+      }
+    </script>
+  </body>
+</html>
