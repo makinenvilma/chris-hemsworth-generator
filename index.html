@@ -14,14 +14,14 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        min-height: 100vh;
         background: linear-gradient(135deg, #2193b0, #6dd5ed);
         color: #fff;
       }
 
       /* Otsikko */
       h1 {
-        font-size: 3.5rem;
+        font-size: 3rem;
         margin-bottom: 20px;
         text-align: center;
         letter-spacing: 2px;
@@ -38,13 +38,15 @@
         overflow: hidden;
         background-color: white;
         padding: 10px;
+        max-width: 90%; /* Maksimikoko rajoitettu pienemmillä näytöillä */
       }
 
-      /* Kuvan tyylit - asetetaan kiinteä koko */
+      /* Kuvan tyylit - asetetaan joustava koko */
       #randomImage {
-        width: 400px; /* Kiinteä leveys */
-        height: 400px; /* Kiinteä korkeus */
-        object-fit: cover; /* Pitää kuvasuhteen säilytettynä täyttäen alueen */
+        width: 100%;
+        height: auto;
+        max-width: 400px; /* Maksimikoko isommilla näytöillä */
+        object-fit: cover;
         border-radius: 10px;
         transition: transform 0.2s ease-in-out;
         cursor: pointer;
@@ -71,11 +73,39 @@
 
       /* Alatunniste */
       footer {
-        position: absolute;
-        bottom: 10px;
         text-align: center;
         color: rgba(255, 255, 255, 0.7);
         font-size: 0.9rem;
+        margin-top: 20px;
+      }
+
+      /* Responsiivisuus */
+      @media (max-width: 768px) {
+        h1 {
+          font-size: 2.5rem;
+        }
+
+        #randomImage {
+          max-width: 300px;
+        }
+
+        footer {
+          font-size: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        h1 {
+          font-size: 2rem;
+        }
+
+        #randomImage {
+          max-width: 250px;
+        }
+
+        footer {
+          font-size: 0.7rem;
+        }
       }
     </style>
   </head>
@@ -93,11 +123,9 @@
       />
     </div>
 
-    <!-- Alatunniste -->
     <footer>Click the image to generate a random Chris Hemsworth photo.</footer>
 
     <script>
-      // Lisää kuviesi nimet tähän taulukkoon
       const images = [
         'images/image1.jpg',
         'images/image2.jpg',
