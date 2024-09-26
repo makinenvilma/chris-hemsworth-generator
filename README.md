@@ -1,1 +1,1 @@
-"# chris-hemsworth-generator" 
+# Chris Hemsworth Generator
